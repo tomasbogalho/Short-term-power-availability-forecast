@@ -1,4 +1,4 @@
-# Short-term-power-availability-forecast-for-EV-charging-hubs-using-Machine-Learning-techniques
+# Short-term-power-availability-forecast
 Repository containing the code for :
 "Short term power availability forecast for EV charging hubs using Machine Learning techniques" 
 (Master Thesis in Electrical and Computer Engineering - Técnico Lisboa). 
