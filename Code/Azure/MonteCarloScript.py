@@ -34,13 +34,13 @@ from colorama import Fore, Style
 #   TO DO:
 #       -Make this in a CONFIG file
 
-user     = 'tomas_bogalho@smartchargingdb.postgres.database.azure.com'
-host     = 'smartchargingdb.postgres.database.azure.com'
-password = 'Q$GfT?[7ph'
-port     = '5432'
-sslmode  = 'true'
-database = 'postgres'
-schema   = 'EDPSC'
+user     = ''
+host     = ''
+password = ''
+port     = ''
+sslmode  = ''
+database = ''
+schema   = ''
 
 conn_string=("postgresql://" + user +":" + password + "@" + host + ":" + port + "/" + database  )
 
@@ -52,7 +52,7 @@ conn_string=("postgresql://" + user +":" + password + "@" + host + ":" + port + 
 engine  = create_engine(conn_string , echo=True)
 Session = sessionmaker(bind=engine)
 Base    = declarative_base()
-meta    = MetaData(schema='EDPSC')
+meta    = MetaData(schema='')
 
 
 ##################################################################################################
@@ -327,18 +327,10 @@ oneday = Table("oneday",meta,
 
 
 
-
-
-
-
-
-
 shift_steps_5 = 5
 shift_steps_10 = 10
 shift_steps_15 = 15
 
-
-# In[ ]:
 
 
 EPSILON = 1e-10
@@ -2516,64 +2508,6 @@ def encoder_decoder(layer, dtr, dv, dtt, cnn):
 
                     mean = np.mean(GlobalPredictions, axis=0)
 
-                    #ci_1 = 0.80
-                    #lower_lim_1 = np.quantile(GlobalPredictions, 0.5-ci_1/2, axis=0)
-                    #upper_lim_1 = np.quantile(GlobalPredictions, 0.5+ci_1/2, axis=0)
-
-                    #ci_2 = 0.95
-                    #lower_lim_2 = np.quantile(GlobalPredictions, 0.5-ci_2/2, axis=0)
-                    #upper_lim_2 = np.quantile(GlobalPredictions, 0.5+ci_2/2, axis=0)
-
-
-                    #fig, ax = plt.subplots(figsize=(10, 3.5))
-                    #for i in range(635, testX.shape[0], testX.shape[0]):
-
-
-                        #forecasts = np.concatenate((nan_array, testX_original[i, -1:, 7], mean[i, :, 0]))
-                        
-                        #forecasts_original = np.concatenate((nan_array, valX_original[i, -1:, 12], predict[i, :, 0]))
-                        
-                        #lower_lim_1 = np.concatenate((nan_array, testX_original[i, -1:, 7], lower_lim_1[i, :, 0]))
-                        #upper_lim_1 = np.concatenate((nan_array, testX_original[i, -1:, 7], upper_lim_1[i, :, 0]))
-                        #lower_lim_2 = np.concatenate((nan_array, testX_original[i, -1:, 7], lower_lim_2[i, :, 0]))
-                        #upper_lim_2 = np.concatenate((nan_array, testX_original[i, -1:, 7], upper_lim_2[i, :, 0]))
-                        
-                        #ground_truth = np.concatenate((nan_array, testX_original[i, -1:, 7], testY_original[i, :, 0]))
-                        #network_input = np.concatenate((testX_original[i, :, 7], nan_array2))
-
-                        #plt.xticks(rotation=45)
-                        
-                        #SMALLER_SIZE = 18
-                        #SMALL_SIZE = 19
-                        #MEDIUM_SIZE = 23
-                        #BIGGER_SIZE = 25
-
-                        #plt.('test title', fontsize=BIGGER_SIZE)
-                        #plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
-                        #plt.rc('axes', titlesize=BIGGER_SIZE)    # fontsize of the axes title
-                        #plt.rc('axes', labelsize=SMALL_SIZE)     # fontsize of the x and y labels
-                        #plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-                        #plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-                        #plt.rc('legend', fontsize=SMALLER_SIZE)  # legend fontsize
-                        #plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
-                            
-                        #plt.fill_between(ind, lower_lim_2, upper_lim_2, color='orange', label = str(int(ci_2 *100)) + '% CI')
-                        #plt.fill_between(ind, lower_lim_1, upper_lim_1, color='silver', label = str(int(ci_1 *100)) + '% CI') 
-                        
-                        #ax.plot(ind, ground_truth, 'r-o', markersize=10, markeredgecolor='black', linewidth=2, label='Av. Power')
-
-                        #ax.plot(ind, forecasts, 'go--', markersize=10, linewidth=2, marker='h', markerfacecolor='lightgreen', \
-                                 #markeredgewidth=2, label='Forecast')
-                        #ax.plot(ind[40:], network_input[40:], '-o', markersize=10, markeredgecolor='black', linewidth=2, label='Av. Power')
-                            
-                        #plt.ticklabel_format(axis='y', style='sci', scilimits=(5,5))
-                        #plt.xlabel('Date')
-                        #plt.ylabel('Available Power [W]')
-                        #plt.title('Model 3 - Available Power - Forecast')
-                        #plt.legend(loc='lower left')
-                        #plt.savefig('./outputs/Images/' + model_name  , bbox_inches = 'tight')
-                        #plt.savefig('Images/' + model_name + '_op2', bbox_inches = 'tight')
-
                     predicted_mean_normalized = []
                     original_normalized = []
 
@@ -2669,8 +2603,8 @@ def encoder_decoder(layer, dtr, dv, dtt, cnn):
 
 
 
-#Vanilla('GRU', dtr, dv, dtt, False)
-#Vanilla('LSTM', dtr, dv, dtt, False)
+Vanilla('GRU', dtr, dv, dtt, False)
+Vanilla('LSTM', dtr, dv, dtt, False)
 
 encoder_decoder('GRU', dtr, dv, dtt, False)
 encoder_decoder('LSTM', dtr, dv, dtt, False)

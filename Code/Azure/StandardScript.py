@@ -34,13 +34,13 @@ from colorama import Fore, Style
 #   TO DO:
 #       -Make this in a CONFIG file
 
-user     = 'tomas_bogalho@smartchargingdb.postgres.database.azure.com'
-host     = 'smartchargingdb.postgres.database.azure.com'
-password = 'Q$GfT?[7ph'
-port     = '5432'
-sslmode  = 'true'
-database = 'postgres'
-schema   = 'EDPSC'
+user     = ''
+host     = ''
+password = ''
+port     = ''
+sslmode  = ''
+database = ''
+schema   = ''
 
 conn_string=("postgresql://" + user +":" + password + "@" + host + ":" + port + "/" + database  )
 
@@ -52,7 +52,7 @@ conn_string=("postgresql://" + user +":" + password + "@" + host + ":" + port + 
 engine  = create_engine(conn_string , echo=True)
 Session = sessionmaker(bind=engine)
 Base    = declarative_base()
-meta    = MetaData(schema='EDPSC')
+meta    = MetaData(schema='')
 
 
 ##################################################################################################
@@ -320,15 +320,6 @@ oneday = Table("oneday",meta,
     Column('P'              ,Float   ,  default=0),
     Column('S'              ,Float   ,  default=0),
 )
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2435,11 +2426,11 @@ def encoder_decoder(layer, dtr, dv, cnn):
 Vanilla('GRU', dtr, dv, False)
 Vanilla('LSTM', dtr, dv, False)
 
-#encoder_decoder('GRU', dtr, dv, False)
-#encoder_decoder('LSTM', dtr, dv, False)
+encoder_decoder('GRU', dtr, dv, False)
+encoder_decoder('LSTM', dtr, dv, False)
 
-#encoder_decoder('GRU', dtr, dv, True)
-#encoder_decoder('LSTM', dtr, dv, True)
+encoder_decoder('GRU', dtr, dv, True)
+encoder_decoder('LSTM', dtr, dv, True)
 
 
 
